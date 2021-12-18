@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  nginx:
+      build: .
+      ports:
+        - "80:80"
+      links:
+        - fpm
+  fpm:
+      image: php:fpm
+      ports:
+        - "9000:9000"
+      volumes:
+        - ./:/test_folder/
